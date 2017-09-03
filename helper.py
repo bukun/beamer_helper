@@ -194,7 +194,6 @@ def do_for_dir(inws):
 
 
 def generate_init():
-    inws = os.path.abspath('part010')
     for wroot, _, wfiles in os.walk(inws):
         for wfile in wfiles:
             initpy = os.path.join(wroot, '__init__.py')
