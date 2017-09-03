@@ -1,0 +1,242 @@
+
+% \usepackage[latin1]{inputenc}
+
+\usepackage{ulem}
+\usepackage{mathcomp}  %  Input math sign. Such as .C .
+\usepackage{tikz}
+\usepackage{smartdiagram}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{snakes}
+% \usetikzlibrary{automata,   positioning}
+
+%%%<
+% \usepackage{verbatim}
+% \usepackage[active,tightpage] % {preview}
+%\PreviewEnvironment{tikzpicture}
+%\setlength\PreviewBorder{5pt}%
+
+
+       % Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, mininum height=1em,
+   text width=3.5em, text badly centered, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+   text width=5em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=5em, text centered,
+   minimum height=2em]
+
+   \usepackage{tabularx}
+\usepackage[no-math]{fontspec}
+
+\usepackage{xeCJK}                       % 这里调用 zhfont.sty
+% \usepackage{xkeyval}
+\usepackage{xunicode,xltxtra,beamerthemesplit}
+
+\makeatletter %将文献引用作为上标出现,增加括号，
+\def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+
+\usetheme{CambridgeUS}  % CambridgeUS Warsaw PaloAlto Boadilla  Rochester Luebeck  Berkeley
+% \usecolortheme{seahorse}
+\usecolortheme{dolphin} % sidebartab dolphin
+\makeatletter %将文献引用作为上标出现,增加括号，
+\def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+
+\setmainfont[BoldFont=Times New Roman]{Times New Roman} % 文中出现的英文
+%\setCJKmainfont[BoldFont=微软雅黑]{微软雅黑}  % 文中出现的中文
+% \setCJKmonofont{Pragmata}   % 设置公式或代码中出现的中文
+%\setsansfont[Mapping=tex-text]{微软雅黑}  %英文无衬线字体
+
+\setCJKmainfont[BoldFont=STXihei, ItalicFont=STKaiti]{STSong}
+\setCJKsansfont[BoldFont=SimHei]{STXihei}
+\setCJKmonofont{STFangsong}
+% \setmonofont{Courier New}
+% \setmonofont{UbuntuMono}
+\setmonofont{YaHei_Monaco}
+
+
+
+
+
+%\setCJKmainfont{STKaiti}
+% \setCJKmonofont{SimSun}   % 设置等宽字体
+% \setsansfont[Mapping=tex-text]{华文细黑}  %英文无衬线字体
+
+\XeTeXlinebreaklocale "zh" %我们处理的文件是中文的
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt %中文自动断行
+
+
+\definecolor{colorKeyword}{RGB}{0,0,150}
+\definecolor{colorNdkeyword}{RGB}{0,100,0}
+\definecolor{colorComment}{RGB}{100,100,100}
+\definecolor{colorIdentifier}{RGB}{0,0,100}  % 标志：主要颜色
+\definecolor{colorString}{RGB}{150,0,0}   % 字符串
+
+
+\usepackage{listings} % 进行语法高亮显示
+
+
+
+\lstset %定义程序代码显示版面，可自定义 。
+{language=Python,
+% frame=tb,
+frame=\leftline\shadowbox,
+% frame=shadowbox,
+% frame=\topline\bottomline, % 边框
+%frame=\single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\ttfamily\footnotesize\color{gray},
+stepnumber=1,
+numbersep=5pt,
+numberstyle=\color[RGB]{80,192,192},
+columns=fullflexible,
+breaklines=false,  % 是否自动断行
+% Frame设置
+backgroundcolor=\color{black!10!white},
+% backgroundcolor=\color{lightgray},
+rulecolor= \color{gray},
+% fillcolor= color command
+% rulesepcolor= color command
+% framexleftmargin=0mm,
+% framextopmargin=0mm,
+frameround=ffff,
+% framesep=8pt, % frame与listing距离，内部。
+% rulesep=8pt,  % control the space between frame and listing and between double rules.
+framerule=.8pt,  % controls the width of the rules. 边框宽度
+% basicstyle=\scriptsize{}\ttfamily{}, % print whole listing small
+basicstyle=\linespread{1.1}\ttfamily\footnotesize, % 设置行距,字体  % small  footnotesize
+basewidth=0.6em,
+% baseheight=0.8em,
+keywordstyle=\ttfamily\bf\color{colorKeyword},
+ndkeywordstyle=\ttfamily\bf\color{colorNdkeyword},
+commentstyle=\color{colorComment},
+identifierstyle=\ttfamily\color{colorIdentifier}\bfseries,
+stringstyle=\color{colorString}\ttfamily,
+% breaklines=true,  % 代码行之间是否有线
+extendedchars=true,
+% escapeinside=``
+emph={czj,joyan},
+emphstyle=\color{blue}\bfseries,
+keywordstyle=\color{blue}\bfseries,
+identifierstyle=\color{black}, % nothing happens
+escapeinside=`',
+% commentstyle=\color{black}, % white comments
+% stringstyle=\ttfamily, % typewriter type for strings
+showstringspaces=false
+}
+
+% \surroundwithmdframed[
+%       hidealllines=true,
+%         backgroundcolor=lightgray,
+%           innerleftmargin=15pt,
+%             innertopmargin=0pt,
+%               innerbottommargin=0pt]{lstlisting}
+
+
+% \lstdefinestyle{shownumber} {numbers=left, stepnumber=1, numberstyle=\tiny, numbersep=10pt}
+\lstdefinestyle{nonumber} {numbers=none}
+
+
+% from: https://gist.github.com/zmwangx/21cda8eb0ab4b1b0e5aa
+
+%
+% beamerthemeStanford.sty
+%
+% Created by Zhiming Wang on August 26, 2014.
+%
+% This theme is inspired by the CambridgeUS theme packaged with the
+% Beamer LaTeX package. The major colors are taken from Stanford's
+% official palettes: https://identity.stanford.edu/overview/color.
+%
+% This work is dedicated by the author to the public domain.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+% EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+% NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+% BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+% ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+% CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+%
+
+% colors: dark red.
+% \definecolor{color_primary}{HTML}{8C1515}
+% \definecolor{color_secondary}{HTML}{D2C295}
+% \definecolor{color_tertiary}{HTML}{DAD7CB}
+
+% Blue
+% \definecolor{color_primary}{HTML}{2D6D79}
+% \definecolor{color_secondary}{HTML}{9CB5B1}
+% \definecolor{color_tertiary}{HTML}{DCD8D5}
+
+% Blue
+% \definecolor{color_primary}{HTML}{005f58}
+% \definecolor{color_secondary}{HTML}{52b5f3}
+% \definecolor{color_tertiary}{HTML}{f5c904}
+
+% Green
+%<<<<
+\definecolor{color_primary}{HTML}{16272e}
+\definecolor{color_secondary}{HTML}{58765a}
+\definecolor{color_tertiary}{HTML}{afee9d}
+%>>>>
+
+% base, courtesy of beamerthemeCambridgeUS.sty
+\mode<presentation>
+\useoutertheme{infolines}
+\useinnertheme{rounded}
+\setbeamerfont{block title}{size={}}
+% custom colors
+\usecolortheme{beaver}
+\setbeamercolor{frametitle}{fg=color_primary,bg=color_secondary!20}
+\setbeamercolor{local structure}{fg=black}
+\setbeamercolor{palette primary}{fg=color_primary,bg=color_secondary}
+\setbeamercolor{palette secondary}{fg=color_primary,bg=color_tertiary}
+\setbeamercolor{palette tertiary}{fg=white,bg=color_primary}
+\setbeamercolor{titlelike}{fg=color_primary,bg=color_secondary!20}
+% kill certain unprofessional elements
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{}
+\setbeamertemplate{section in toc}%
+{\inserttocsectionnumber.~\inserttocsection}
+\setbeamertemplate{subsection in toc}%
+{\hspace{1em}$\bullet$~\inserttocsubsection\par}
+\setbeamertemplate{itemize items}{$\bullet$}
+
+% plain and definition theorem styles in color_secondary
+\makeatletter
+\def\th@plain{
+  \normalfont
+  \setbeamercolor{block title example}{bg=color_secondary,fg=white}
+  \setbeamercolor{block body example}{bg=color_secondary!20,fg=black}
+  \def\inserttheoremblockenv{exampleblock}
+}
+\theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{proposition}{Proposition}
+
+\def\th@definition{
+  \normalfont
+  \setbeamercolor{block title example}{bg=color_secondary,fg=white}
+  \setbeamercolor{block body example}{bg=color_secondary!20,fg=black}
+  \def\inserttheoremblockenv{exampleblock}
+}
+\theoremstyle{definition}
+
+% highlight theorem style in color_primary
+\makeatletter
+\def\th@highlight{
+  \normalfont
+  \setbeamercolor{block title example}{bg=color_primary,fg=white}
+  \setbeamercolor{block body example}{bg=color_primary!20,fg=black}
+  \def\inserttheoremblockenv{exampleblock}
+}
+\makeatother
+\theoremstyle{highlight}
+\newtheorem{hconjecture}{Conjecture}
+\newtheorem{hcorollary}{Corollary}
+\newtheorem{htheorem}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{answer}{Answer}
+
