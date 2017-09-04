@@ -1,0 +1,324 @@
+% \NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{ogl_book}[2005/07/06 0.1 Tsinghua University Thesis Template for Doctor and Master]
+
+% \usepackage{geometry}
+%
+% \geometry{top=.8in,bottom=.5in,left=.5in,right=.5in,paperheight=7.4in, paperwidth=12.20in }
+%
+% % 可以修改页面的大小。双栏的话在类型中添加：twocolumn
+% % \geometry{top=1in,bottom=1in,left=1.65in,right=1.05in,paperheight=7.4in, paperwidth=12.20in }
+%
+% \columnsep=.8cm % 双栏article中, 左右栏间空白的距离
+% \columnseprule=0.4pt  % 双栏article中, 左右栏间分隔线的宽度, 缺省 为零, 即没 有线
+\usepackage{tikz}
+
+% \usepackage{cases}
+\usetikzlibrary{shapes,arrows}
+\usepackage{makeidx} % 制作索引
+\usepackage{showidx} % 正文左边打印索引项
+\usepackage{amsmath,amssymb,amsthm} %使用大矩阵 bmatrix
+\usepackage{./helper/picins}
+
+\usepackage{fontspec} %调整字体
+\usepackage{titlesec} %标题
+\usepackage{textcomp}
+
+\usepackage[framemethod=tikz]{mdframed}
+
+
+\usepackage{ulem}
+\linespread{1.05}
+
+\usepackage{indentfirst} %中文首行缩进
+\setlength{\parindent}{2em}
+% \setlength{\parindent}{0.77cm} %缩进长度
+
+\usepackage{hyperref} %超链接
+\usepackage{xcolor} %颜色
+\usepackage{graphicx} %图形
+\usepackage{framed} %代码背景色
+\usepackage{xeCJK}
+\usepackage{longtable}  % 使表格文字自动换行
+\usepackage{multirow}
+\usepackage{ltxtable}
+\usepackage{array}
+\usepackage{supertabular}
+
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+
+\usepackage{minitoc}
+
+\usepackage{adjustbox} % Used to constrain images to a maximum size
+\usepackage{fancyvrb} % verbatim replacement that allows latex
+\usepackage{booktabs}  % table support for pandoc > 1.12.2, \toprule, \midrule, \bottomrule
+
+
+% \setcounter{secnumdepth}{3}  % subsubsection编号
+\usepackage{titlesec} %标题
+\titleformat{\chapter}{\centering\LARGE\bfseries}{第\,\thechapter\,章}{1em}{}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+% \titleformat{\paragraph}{\normalsize\bfseries}{\paragraph}{1em}{}
+
+
+    % 设置章名和节名的显示方式
+    % \renewcommand{\chaptermark}[1]{\markboth{~第~\thechapter~章~~~#1~}{}}
+    % \renewcommand{\sectionmark}[1]{\markright{~\thesection~~#1~}{}}
+
+\renewcommand{\baselinestretch}{1.4}
+% \renewcommand{\linewidth}{5}
+
+
+% \usepackage[latin1]{inputenc}
+%\usepackage[OT2,T1]{fontenc}
+% 使用文献为上标
+
+\usepackage{cite}
+\newcommand\bkcite[1]{\raisebox{0.3em}{\tiny\cite{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\@textsubscript#1{{\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+\DeclareRobustCommand*\textsubscript[1]{\@textsubscript{\selectfont#1}}
+
+
+\usepackage{fancyhdr}
+
+\fancypagestyle{plain}     % `plain`, default for article
+% \fancypagestyle{headings}    % `headings`, default forbook
+
+\fancyhf{} % 清空当前设置
+
+% 设置页眉 (head)
+
+\fancyhead[RE]{\footnotesize\leftmark} % 在偶数页的右侧显示章名
+
+\fancyhead[LO]{\footnotesize\rightmark} % 在奇数页的左侧显示小节名
+
+\fancyhead[LE,RO]{\footnotesize~\thepage~} % 在偶数页的左侧，奇数页的右侧显示页码
+
+% 设置页脚：在每页的右下脚以斜体显示书名
+
+\fancyfoot[RO,RE]{\footnotesize \it http://www.osgeo.cn }
+
+\renewcommand{\headrulewidth}{0.7pt} % 页眉与正文之间的水平线粗细
+
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy} % 选用 fancy style
+
+% 其余同 plain style
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\usepackage{listings} % 进行语法高亮显示
+\lstset %定义程序代码显示版面，可自定义 。
+{language=Python,
+frame=tb,
+% frame=shadowbox,
+% frame=\topline\bottomline, % 边框
+%frame=\single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\ttfamily\footnotesize\color{gray},
+% Frame设置
+backgroundcolor=\color{white},
+% backgroundcolor=\color{lightgray},
+rulecolor= \color{gray},
+% fillcolor= color command
+% rulesepcolor= color command
+% framexleftmargin=0mm,
+% framextopmargin=0mm,
+xleftmargin=2em,  % left margin
+xrightmargin=2em, % right margin
+aboveskip=1.2em,
+frameround=ffff,
+% framesep=8pt, % frame与listing距离，内部。
+% rulesep=8pt,  % control the space between frame and listing and between double rules.
+framerule=.8pt,  % controls the width of the rules. 边框宽度
+%
+basicstyle=\linespread{1}\ttfamily\footnotesize, % 设置行距,字体  % small  footnotesize
+basewidth=0.6em,
+% baseheight=0.8em,
+keywordstyle=\ttfamily\bf\color{colorKeyword},
+ndkeywordstyle=\ttfamily\bf\color{colorNdkeyword},
+commentstyle=\color{colorComment},
+identifierstyle=\ttfamily\color{colorIdentifier}\bfseries,
+stringstyle=\color{colorString}\ttfamily,showstringspaces=false,
+% breaklines=true,  % 代码行之间是否有线
+extendedchars=true,
+% escapeinside=``
+}
+
+% \surroundwithmdframed[
+%       hidealllines=true,
+%         backgroundcolor=lightgray,
+%           innerleftmargin=15pt,
+%             innertopmargin=0pt,
+%               innerbottommargin=0pt]{lstlisting}
+
+
+% \lstdefinestyle{shownumber} {numbers=left, stepnumber=1, numberstyle=\tiny, numbersep=10pt}
+\lstdefinestyle{nonumber} {numbers=none}
+
+\lstdefinestyle{MyFrame}{backgroundcolor=\color{white}, basicstyle=\ttfamily\footnotesize}
+% \lstdefinestyle{MyFrame}{backgroundcolor=\color{white}, basicstyle=\ttfamily\footnotesize}
+\lstdefinestyle{MyPython} {language=Python,style=nonumber,style=MyFrame}
+\lstdefinestyle{MyBash} {language=Bash,style=nonumber,style=MyFrame}
+\lstdefinestyle{MyYX} {language=Python,style=nonumber,style=MyFrame,frame=tlrb}
+
+
+
+% \lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
+% \lstset{extendedchars=false}%这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+% \lstset{language=Python}%这条命令可以让LaTeX排版时将关键字突出显示
+% \lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
+% \lstset{extendedchars=false}%这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+% \lstset{language=c,extendedchar=false}
+%
+%
+
+\definecolor{shadecolor}{gray}{0.85} %代码背景色灰色
+\setmainfont[BoldFont=Times New Roman, Mapping=tex-text]{Times New Roman} % 文中出现的英文
+% \setCJKmainfont[BoldFont=Adobe Heiti Std]{Microsoft YaHei}  % 文中出现的中文
+% \setCJKmonofont{Adobe Song Std}   % 设置公式或代码中出现的中文
+
+% \setCJKmainfont[BoldFont=SimHei]{SimSun}  % 文中出现的中文
+% \setCJKmonofont{SimSun}   % 设置公式或代码中出现的中文
+
+\setCJKmainfont[BoldFont=STXihei, ItalicFont=STKaiti]{STSong}
+\setCJKsansfont[BoldFont=STHeiti]{STXihei}
+\setCJKmonofont{STFangsong}
+% \setmonofont{Monaco}
+\setmonofont{Courier New}
+
+
+% \setmonofont{CMTT}
+% \setCJKmonofont{Monaco}
+
+
+\XeTeXlinebreaklocale "zh" %我们处理的文件是中文的
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt %中文自动断行
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 设定列表等的参数
+
+\usepackage{enumitem}
+    \setenumerate[1]{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
+    \setitemize[1]{itemsep=18pt,partopsep=10pt,parsep=\parskip,topsep=8pt}
+    \setdescription{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
+
+% 解决默认的itemize存在行距过大的问题
+\usepackage{paralist}
+\let\itemize\compactitem
+\let\enditemize\endcompactitem
+\let\enumerate\compactenum
+\let\endenumerate\endcompactenum
+\let\description\compactdesc
+\let\enddescription\endcompactdesc
+
+% list 参数配置命令
+% 默认的列表前导样式
+% \renewcommand\labelitemi{\small $\triangleright$} % $\cdot$
+\renewcommand\labelitemi{\tiny $^\bullet$} % 字号变号，同时又向上一点
+
+
+% 自定义 itemize -- 未使用
+\newenvironment{bkitemize}[1][]{%%%%%定义新环境
+\begin{list}  % {{\hei #1}} %%标签格式
+    {
+         \setlength{\leftmargin}{0cm}     %左边界
+         \setlength{\parsep}{0ex}         %段落间距
+         \setlength{\topsep}{0bp}         %列表到上下文的垂直距离
+         \setlength{\itemsep}{0ex}        %标签间距
+         \setlength{\labelsep}{0.3em}     %标号和列表项之间的距离,默认0.5em
+         \setlength{\itemindent}{3em}    %标签缩进量
+         \setlength{\listparindent}{5em} %段落缩进量
+        }}
+{\end{list}}%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\frenchspacing
+
+
+
+
+
+% 设置中文正文字号
+\newlength{\mmfontsize}
+\setlength{\mmfontsize}{18pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\contentsname}{目录}
+
+
+% \tableofcontents
+\renewcommand{\listfigurename}{图形清单}
+% \listoffigures # 列出图形
+\renewcommand{\listtablename}{表格清单}
+% \listoftables  # 列出表格
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{section}.\arabic{figure}}
+\renewcommand{\chaptername}[2]{第~\thechapter~章}
+
+
+\setcounter{tocdepth}{2} %1的话为章加节；４的话到paragraph 目录深度为二级
+
+
+
+\newcommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\hbadness=10000 \tolerance=10000 \hfuzz=150pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{colorKeyword}{RGB}{0,0,150}
+\definecolor{colorNdkeyword}{RGB}{0,100,0}
+\definecolor{colorComment}{RGB}{0,0,0}
+\definecolor{colorIdentifier}{RGB}{0,0,100}  % 标志：主要颜色
+\definecolor{colorString}{RGB}{150,0,0}   % 字符串
+
+
+
+
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+
+
+% \widowpenalty=10000
+% \setlength\baselineskip{12pt}
+\setlength{\baselineskip}{1em} % 行距
+\setlength{\parskip}{0pt} % 段落间距
+
+% \fontsize{11pt}{24pt}\selectfont
+% 在 LaTeX 中，用 \linespread{倍数} 命令就可以简单地设置 \baselinestretch 的值，不需要用 \renewcommand。
+

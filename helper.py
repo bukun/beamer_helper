@@ -4,11 +4,20 @@ import os
 import sys
 import shutil
 
-fz_dict = {           'slide': 'sec',
+fz_dict = {'part': 'ch',
+           'ch': 'sec',
+		   'slide': 'sec',
            'sec': 'test',
            }
 # magic_str = '%----%'
 magic_str = '%%%% ==== %%%% ==== %%%% ==== %%%%'
+
+
+def get_tmp_file(fileobj, fig_index=1, file_ext='pdf'):
+    return os.path.join(
+        os.path.split(os.path.realpath(fileobj))[0],
+        'xx' + os.path.split(os.path.realpath(fileobj))[1][4:-3] + '{0}.{1}'.format(fig_index, file_ext)
+    )
 
 
 def get_file_path(inroot, wname):
@@ -173,7 +182,7 @@ def zuzhi_dir(inws, sig_main, w_len):
 def do_for_dir(inws):
 
     w_len = len(inws)
-    zuzhi_dir(inws, 'slide', w_len)
+    
 
 
     for wroot, wdirs, wfiles in os.walk(inws):
@@ -193,15 +202,7 @@ def do_for_dir(inws):
                     zuzhi_dir(indir, sig_main, w_len)
 
 
-def generate_init():
-    for wroot, _, wfiles in os.walk(inws):
-        for wfile in wfiles:
-            initpy = os.path.join(wroot, '__init__.py')
-            if os.path.exists(initpy):
-                pass
-            else:
-                with open(initpy, 'w') as file_o:
-                    file_o.write("""# -*- coding: utf-8 -*-""")
+
 
 
 

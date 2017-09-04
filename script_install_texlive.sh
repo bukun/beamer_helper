@@ -11,3 +11,5 @@ aptitude install -y  texlive-latex-recommended
 aptitude install -y  texlive-pictures
 aptitude install -y  texlive-pstricks
 aptitude install -y  texlive-xetex
+aptitude install -y  texlive-math-extra
+
