@@ -137,6 +137,10 @@ showstringspaces=false
 \lstdefinestyle{nonumber} {numbers=none}
 
 
+
+
+
+
 % from: https://gist.github.com/zmwangx/21cda8eb0ab4b1b0e5aa
 
 %
@@ -240,3 +244,29 @@ showstringspaces=false
 \newtheorem{question}{Question}
 \newtheorem{answer}{Answer}
 
+
+% Begin minted
+\RequirePackage{minted}%
+\RequirePackage[minted]{tcolorbox}%
+\tcbuselibrary{breakable}
+\definecolor{codeback}{RGB}{240,240,240}
+\definecolor{bashback}{RGB}{48,10,36}
+
+% \setminted[python]{fontsize=\footnotesize,frame=true,linenos=true}
+
+\newminted{py3}{bgcolor=codeback, linenos, tabsize=4, fontsize=\footnotesize,frame=none,numbersep=3pt, framesep=1pt,python3=true}
+
+\renewcommand{\theFancyVerbLine}{\sffamily
+\textcolor[rgb]{0.5,0.5,1.0}{\scriptsize
+\oldstylenums{\arabic{FancyVerbLine}}}}
+
+% gobble=2}
+
+
+% \newtcblisting{tcbcode}[2][]{listing engine=minted,minted language=#2,minted options={fontsize=\footnotesize,frame=none},listing only,#1,breakable=true,colback=codeback,boxrule=0.4pt,boxsep=0pt}
+
+
+% \newtcblisting{tcbpython}[1][]{listing engine=minted,minted language=python,minted options={fontsize=\footnotesize,frame=none},listing only,#1,breakable=true,colback=codeback,boxrule=0.4pt,boxsep=0pt}
+% \newtcblisting{tcbbash}[1][]{listing engine=minted,minted style=native,minted language=bash,minted options={fontsize=\footnotesize,frame=none},listing only,#1,breakable=true,boxrule=0.4pt,colback=bashback,coltext=white}
+
+% End minted
