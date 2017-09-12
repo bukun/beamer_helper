@@ -1,7 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{ogl_booktp}[2005/07/06 0.1 Tsinghua University Thesis Template for Doctor and Master]
 
-\LoadClass[11pt, oneside]{book}[2009/05/05]  % book, oneside，避免双面排版
+% \LoadClass[11pt, oneside]{book}[2009/05/05]  % book, oneside，避免双面排版
+\LoadClass[11pt]{book}[2009/05/05]  % book, oneside，避免双面排版
 
 % \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
