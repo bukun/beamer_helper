@@ -6,7 +6,7 @@ import shutil
 
 fz_dict = {'part': 'ch',
            'ch': 'sec',
-		   'slide': 'sec',
+           'slide': 'sec',
            'sec': 'test',
            }
 # magic_str = '%----%'
@@ -66,7 +66,7 @@ def check_condition(instr):
     return False
 
 
-def bianli_chili_include(inws):
+def bianli_chili_include(inws, pre_len = 0):
     '''
     对tex文件中的图片，程序等引用外部文件的进行处理
     '''
@@ -85,7 +85,7 @@ def bianli_chili_include(inws):
                         '''
                         注意，只許出现在一行中，并且有且只能有一组{}
                         '''
-                        print(cnt)
+                        # print(cnt)
 
                         print('=' * 80)
 
@@ -104,8 +104,9 @@ def bianli_chili_include(inws):
                             pass
                         else:
                             # 根据当前路径处理
-                            outpath = '.%s' % (outpath[len(inws):])
+                            outpath = '.' + outpath[pre_len:]
                             tmp = cnt.replace(filepath, outpath)
+
                             cnt = tmp
 
                     fo.write(cnt)
@@ -149,6 +150,7 @@ def zuzhi_dir(inws, sig_main, w_len):
         for w2file in w2files:
             if w2file.startswith(sig_zucheng) and w2file.endswith('.tex'):
                 w2filein = os.path.join(w2root, w2file)
+                print(w2filein)
                 zucheng_files.append(w2filein)
     if len(zucheng_files) > 0:
         pass
@@ -167,23 +169,21 @@ def zuzhi_dir(inws, sig_main, w_len):
     fo.write('%s\n' % magic_str)
 
     for zucheng_file in zucheng_files:
-        print('-' * 80)
-        print(zucheng_file)
+        # print('-' * 80)
+        # print(zucheng_file)
         # 取第一行，写入
         tep = open(zucheng_file).readlines()[0]
         fo.write('%% %s' % (tep))
         # 写入组成文件
-        zucheng_file = '.' + zucheng_file[w_len:-4]
-        fo.write('\input{%s}\n\n' % (zucheng_file))
+        zucheng_file = zucheng_file[w_len:-4]
+
+        fo.write('\input{.%s}\n\n' % (zucheng_file))
 
     fo.close()
 
 
-def do_for_dir(inws):
-
+def do_for_dir(inws, pre_len = 0):
     w_len = len(inws)
-    
-
 
     for wroot, wdirs, wfiles in os.walk(inws):
         for wdir in wdirs:
@@ -199,18 +199,19 @@ def do_for_dir(inws):
                 if wdir.startswith(fzkey):
                     sig_main = fzkey
                     # 分别得到目录的名称，下一级的标识，以及路径的长度
-                    zuzhi_dir(indir, sig_main, w_len)
-
-
-
-
-
-
+                    zuzhi_dir(indir, sig_main, pre_len)
 
 
 if __name__ == '__main__':
-    fuws = os.getcwd()
+    # if len(sys.argv) > 1:
+
+
+    fuws = os.path.join(os.getcwd(), sys.argv[1])
+    print(fuws)
+    # else:
+    #     fuws = os.getcwd()
     # fuws = os.path.join(os.getcwd(), 'part010/ch06_shapely/sec2_geometry_opt')
     # generate_init()
-    do_for_dir(fuws)
-    bianli_chili_include(fuws)
+    root_len = len(os.getcwd())
+    do_for_dir(fuws, pre_len = root_len)
+    bianli_chili_include(fuws, pre_len = root_len)
