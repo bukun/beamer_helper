@@ -13,7 +13,7 @@ fz_dict = {'part': 'ch',
 magic_str = '%%%% ==== %%%% ==== %%%% ==== %%%%'
 
 
-def get_tmp_file(fileobj, fig_index=1, file_ext='pdf'):
+def get_tmp_file(fileobj, fig_index=1, file_ext='png'):
     return os.path.join(
         os.path.split(os.path.realpath(fileobj))[0],
         'xx' + os.path.split(os.path.realpath(fileobj))[1][4:-3] + '{0}.{1}'.format(fig_index, file_ext)
@@ -60,7 +60,7 @@ def check_condition(instr):
     if r'\lstinput' in instr:
         return True
     if r'\input' in instr:
-        return False
+        return True
     if r'\adjustimage' in instr:
         return True
     return False

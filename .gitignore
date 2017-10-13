@@ -1,5 +1,7 @@
 ogl_*
 
+__pycache__
+*.pyc
 *.pdf
 
 *.mtc
