@@ -186,6 +186,11 @@ def do_for_dir(inws, pre_len = 0):
     w_len = len(inws)
 
     for wroot, wdirs, wfiles in os.walk(inws):
+        if 'part0'  in wroot:
+            pass
+        else:
+            continue
+
         for wdir in wdirs:
             indir = os.path.join(wroot, wdir)
             fzkeys = fz_dict.keys()
