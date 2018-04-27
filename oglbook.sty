@@ -16,6 +16,7 @@
 \usetikzlibrary{shapes,arrows}
 \usepackage{makeidx} % 制作索引
 \usepackage{showidx} % 正文左边打印索引项
+\usepackage{nomencl} % 使用术语表
 \usepackage{amsmath,amssymb,amsthm} %使用大矩阵 bmatrix
 \usepackage{./helper/picins}
 
@@ -438,3 +439,6 @@ extendedchars=true,
 \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
 \makeatother
 
+\makenomenclature
+
+\renewcommand{\nomname}{术语表}
