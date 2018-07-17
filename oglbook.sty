@@ -16,12 +16,14 @@
 \usetikzlibrary{shapes,arrows}
 \usepackage{makeidx} % 制作索引
 \usepackage{showidx} % 正文左边打印索引项
+\usepackage{nomencl} % 使用术语表
 \usepackage{amsmath,amssymb,amsthm} %使用大矩阵 bmatrix
 \usepackage{./helper/picins}
 
 \usepackage{fontspec} %调整字体
 \usepackage{titlesec} %标题
 \usepackage{textcomp}
+\usepackage{subfigure} % 实现多个子图
 
 \usepackage[framemethod=tikz]{mdframed}
 
@@ -64,9 +66,9 @@
 % \titleformat{\paragraph}{\normalsize\bfseries}{\paragraph}{1em}{}
 
 
-    % 设置章名和节名的显示方式
-    % \renewcommand{\chaptermark}[1]{\markboth{~第~\thechapter~章~~~#1~}{}}
-    % \renewcommand{\sectionmark}[1]{\markright{~\thesection~~#1~}{}}
+% 设置章名和节名的显示方式
+% \renewcommand{\chaptermark}[1]{\markboth{~第~\thechapter~章~~~#1~}{}}
+% \renewcommand{\sectionmark}[1]{\markright{~\thesection~~#1~}{}}
 
 \renewcommand{\baselinestretch}{1.4}
 % \renewcommand{\linewidth}{5}
@@ -103,7 +105,7 @@
 
 % 设置页脚：在每页的右下脚以斜体显示书名
 
-\fancyfoot[RO,RE]{\footnotesize \it http://www.osgeo.cn }
+\fancyfoot[RO,RE]{\footnotesize \it \number\year - \number\month - \number\day }
 
 \renewcommand{\headrulewidth}{0.7pt} % 页眉与正文之间的水平线粗细
 
@@ -175,9 +177,120 @@ extendedchars=true,
 \lstdefinestyle{MyFrame}{backgroundcolor=\color{white}, basicstyle=\ttfamily\footnotesize}
 % \lstdefinestyle{MyFrame}{backgroundcolor=\color{white}, basicstyle=\ttfamily\footnotesize}
 \lstdefinestyle{MyPython} {language=Python,style=nonumber,style=MyFrame}
-\lstdefinestyle{MyBash} {language=Bash,style=nonumber,style=MyFrame}
-\lstdefinestyle{MyYX} {language=Python,style=nonumber,style=MyFrame,frame=tlrb}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstdefinestyle{MySql} {language=SQL,
+frame=tb,
+% frame=shadowbox,
+% frame=\topline\bottomline, % 边框
+%frame=\single,
+numbers=right,
+% numbersep=5pt,
+% numberstyle=\ttfamily\footnotesize\color{gray},
+% Frame设置
+backgroundcolor=\color{white},
+% backgroundcolor=\color{lightgray},
+rulecolor= \color{gray},
+% fillcolor= color command
+% rulesepcolor= color command
+% framexleftmargin=0mm,
+% framextopmargin=0mm,
+xleftmargin=2em,  % left margin
+xrightmargin=2em, % right margin
+aboveskip=1.2em,
+frameround=ffff,
+% framesep=8pt, % frame与listing距离，内部。
+% rulesep=8pt,  % control the space between frame and listing and between double rules.
+framerule=.8pt,  % controls the width of the rules. 边框宽度
+%
+basicstyle=\linespread{1}\ttfamily\footnotesize, % 设置行距,字体  % small  footnotesize
+basewidth=0.6em,
+% baseheight=0.8em,
+% keywordstyle=\ttfamily\bf\color{colorKeyword},
+ndkeywordstyle=\ttfamily\bf\color{colorNdkeyword},
+commentstyle=\color{colorComment},
+identifierstyle=\ttfamily\color{colorIdentifier}\bfseries,
+stringstyle=\color{colorString}\ttfamily,showstringspaces=false,
+% breaklines=true,  % 代码行之间是否有线
+extendedchars=true,
+% escapeinside=``
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\lstdefinestyle{MyBash} {language=Bash,
+frame=tb,
+% frame=shadowbox,
+% frame=\topline\bottomline, % 边框
+%frame=\single,
+numbers=right,
+% numbersep=5pt,
+% numberstyle=\ttfamily\footnotesize\color{gray},
+% Frame设置
+backgroundcolor=\color{white},
+% backgroundcolor=\color{lightgray},
+rulecolor= \color{gray},
+% fillcolor= color command
+% rulesepcolor= color command
+% framexleftmargin=0mm,
+% framextopmargin=0mm,
+xleftmargin=2em,  % left margin
+xrightmargin=2em, % right margin
+aboveskip=1.2em,
+frameround=ffff,
+% framesep=8pt, % frame与listing距离，内部。
+% rulesep=8pt,  % control the space between frame and listing and between double rules.
+framerule=.8pt,  % controls the width of the rules. 边框宽度
+%
+basicstyle=\linespread{1}\ttfamily\footnotesize, % 设置行距,字体  % small  footnotesize
+basewidth=0.6em,
+% baseheight=0.8em,
+% keywordstyle=\ttfamily\bf\color{colorKeyword},
+ndkeywordstyle=\ttfamily\bf\color{colorNdkeyword},
+commentstyle=\color{colorComment},
+identifierstyle=\ttfamily\color{colorIdentifier}\bfseries,
+stringstyle=\color{colorString}\ttfamily,showstringspaces=false,
+% breaklines=true,  % 代码行之间是否有线
+extendedchars=true,
+% escapeinside=``
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstdefinestyle{MyYX} {language=Python,style=nonumber,style=MyFrame,frame=tlrb}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstdefinestyle{MyText} {
+frame=tb,
+% frame=shadowbox,
+% frame=\topline\bottomline, % 边框
+%frame=\single,
+numbers=right,
+% numbersep=5pt,
+% numberstyle=\ttfamily\footnotesize\color{gray},
+% Frame设置
+backgroundcolor=\color{white},
+% backgroundcolor=\color{lightgray},
+rulecolor= \color{gray},
+% fillcolor= color command
+% rulesepcolor= color command
+% framexleftmargin=0mm,
+% framextopmargin=0mm,
+xleftmargin=2em,  % left margin
+xrightmargin=2em, % right margin
+aboveskip=1.2em,
+frameround=ffff,
+% framesep=8pt, % frame与listing距离，内部。
+% rulesep=8pt,  % control the space between frame and listing and between double rules.
+framerule=.8pt,  % controls the width of the rules. 边框宽度
+%
+basicstyle=\linespread{1}\ttfamily\footnotesize, % 设置行距,字体  % small  footnotesize
+basewidth=0.6em,
+% baseheight=0.8em,
+% keywordstyle=\ttfamily\bf\color{colorKeyword},
+ndkeywordstyle=\ttfamily\bf\color{colorNdkeyword},
+commentstyle=\color{colorComment},
+identifierstyle=\ttfamily\color{colorIdentifier}\bfseries,
+stringstyle=\color{colorString}\ttfamily,showstringspaces=false,
+% breaklines=true,  % 代码行之间是否有线
+extendedchars=true,
+% escapeinside=``
+}
 
 
 % \lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
@@ -218,9 +331,9 @@ extendedchars=true,
 % 设定列表等的参数
 
 \usepackage{enumitem}
-    \setenumerate[1]{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
-    \setitemize[1]{itemsep=18pt,partopsep=10pt,parsep=\parskip,topsep=8pt}
-    \setdescription{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
+\setenumerate[1]{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=18pt,partopsep=10pt,parsep=\parskip,topsep=8pt}
+\setdescription{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
 
 % 解决默认的itemize存在行距过大的问题
 \usepackage{paralist}
@@ -240,15 +353,15 @@ extendedchars=true,
 % 自定义 itemize -- 未使用
 \newenvironment{bkitemize}[1][]{%%%%%定义新环境
 \begin{list}  % {{\hei #1}} %%标签格式
-    {
-         \setlength{\leftmargin}{0cm}     %左边界
-         \setlength{\parsep}{0ex}         %段落间距
-         \setlength{\topsep}{0bp}         %列表到上下文的垂直距离
-         \setlength{\itemsep}{0ex}        %标签间距
-         \setlength{\labelsep}{0.3em}     %标号和列表项之间的距离,默认0.5em
-         \setlength{\itemindent}{3em}    %标签缩进量
-         \setlength{\listparindent}{5em} %段落缩进量
-        }}
+{
+\setlength{\leftmargin}{0cm}     %左边界
+\setlength{\parsep}{0ex}         %段落间距
+\setlength{\topsep}{0bp}         %列表到上下文的垂直距离
+\setlength{\itemsep}{0ex}        %标签间距
+\setlength{\labelsep}{0.3em}     %标号和列表项之间的距离,默认0.5em
+\setlength{\itemindent}{3em}    %标签缩进量
+\setlength{\listparindent}{5em} %段落缩进量
+}}
 {\end{list}}%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -286,7 +399,7 @@ extendedchars=true,
 
 
 \newcommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \hbadness=10000 \tolerance=10000 \hfuzz=150pt
 
@@ -322,4 +435,10 @@ extendedchars=true,
 % \fontsize{11pt}{24pt}\selectfont
 % 在 LaTeX 中，用 \linespread{倍数} 命令就可以简单地设置 \baselinestretch 的值，不需要用 \renewcommand。
 
-\makeindex
+\makeatletter
+\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother
+
+\makenomenclature
+
+\renewcommand{\nomname}{术语表}

@@ -12,4 +12,5 @@ apt install -y texlive-pictures
 apt install -y texlive-pstricks
 apt install -y texlive-xetex
 apt install -y texlive-math-extra
+apt install -y python-pygments python3-pygments
 
