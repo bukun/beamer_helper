@@ -196,10 +196,6 @@ def do_for_dir(inws, pre_len=0):
             for wdir in wdirs:
                 if 'part0' in wdir:
                     switch = True
-        if switch:
-            pass
-        else:
-            continue
 
         for wdir in wdirs:
             indir = os.path.join(wroot, wdir)
@@ -220,7 +216,7 @@ if __name__ == '__main__':
 
 
     fuws = os.path.join(os.getcwd(), sys.argv[1])
-    print(fuws)
+    # print(fuws)
     # else:
     #     fuws = os.getcwd()
     # fuws = os.path.join(os.getcwd(), 'part010/ch06_shapely/sec2_geometry_opt')
