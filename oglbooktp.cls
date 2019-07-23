@@ -16,7 +16,11 @@
 % \geometry{top=1in,bottom=1.2in,left=1.45in,right=1.25in, lines=.5in}
 % \geometry{papersize={170mm,240mm},top=20mm,textwidth=130mm,lines=36,inner=15mm}
 
-\geometry{left=3.2cm,right=2.5cm,top=2.5cm,bottom=2.5cm, headsep=1cm, foot=1cm, bindingoffset=0mm}
+% 原来正常
+% \geometry{left=3.2cm,right=2.5cm,top=2.5cm,bottom=2.5cm, headsep=1cm, foot=1cm, bindingoffset=0mm}
+% \geometry{left=4.2cm,right=3.5cm,top=2.5cm,bottom=2.5cm, headsep=1cm, foot=1cm, bindingoffset=0mm}
+% 适合  Surface
+\geometry{left=14mm,right=14mm,top=20mm,bottom=20mm, headsep=10mm, foot=10mm, bindingoffset=0mm, paperheight=240mm, paperwidth=170mm}
 
 % 可以修改页面的大小。双栏的话在类型中添加：twocolumn
 % \geometry{top=1in,bottom=1in,left=1.65in,right=1.05in,paperheight=7.4in, paperwidth=12.20in }
